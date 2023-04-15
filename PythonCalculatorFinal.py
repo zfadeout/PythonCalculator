@@ -1,6 +1,7 @@
 #Visual components
 import tkinter as tk
 
+
 calculation = ""
 
 def add_calculation(symbol):
@@ -9,16 +10,22 @@ def add_calculation(symbol):
     text_result.delete(1.0, "end")
     text_result.insert(1.0, calculation)
 
-def evaluate_calculation():
-    global calculation
+def evaluate_calculation(): 
     try:
+        global calculation
+        print (calculation)
         result = str(eval(calculation))
         calculation = ""
-        text_result.delete(1,0, "end")
+        #text_result.delete(1,0, "end")
+        clear_field()
         text_result.insert(1.0, result)
-    except:
+    except Exception as err:
         clear_field()
         text_result.insert(1.0, "Error")
+        # 
+        ## We want to print out the traceback 
+        # print (err,exc_info=True)
+        
 
 def clear_field():
     global calculation
